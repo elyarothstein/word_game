@@ -369,10 +369,10 @@ h2 {
 
 .plane-tail {
   position: absolute;
-  right: 4%;
-  top: 3px;
-  width: 22%;
-  height: 42px;
+  right: 2%;
+  top: -8px;
+  width: 24%;
+  height: 46px;
   clip-path: polygon(18% 100%, 100% 0, 82% 100%);
   background:
     repeating-linear-gradient(35deg, rgba(255,255,255,0.38) 0 2px, transparent 2px 9px),
