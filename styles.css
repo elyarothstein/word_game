@@ -129,7 +129,7 @@ h2 {
 }
 
 .route-panel {
-  min-height: 1860px;
+  min-height: 2040px;
   position: relative;
   overflow: hidden;
   border: 4px solid rgba(52, 16, 76, 0.4);
@@ -153,7 +153,7 @@ h2 {
 
 .map-labels span:last-child {
   position: absolute;
-  top: 1790px;
+  top: 1964px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -394,14 +394,14 @@ h2 {
 
 .plane-a {
   top: -140px;
-  right: 4%;
+  left: 22%;
   animation-name: flyHomeA;
   animation-duration: 18s;
 }
 
 .plane-b {
   top: -260px;
-  left: 3%;
+  left: 64%;
   animation-name: flyHomeB;
   animation-duration: 24s;
   animation-delay: 6s;
@@ -409,40 +409,40 @@ h2 {
 
 @keyframes flyHomeA {
   0% {
-    transform: translate(80px, -20px) rotate(116deg) scale(0.72);
+    transform: translateY(-40px) rotate(-90deg) scale(0.72);
     opacity: 0;
   }
   8% {
     opacity: 0.96;
   }
   45% {
-    transform: translate(-260px, 430px) rotate(116deg) scale(0.86);
+    transform: translateY(480px) rotate(-90deg) scale(0.86);
   }
   82% {
     opacity: 0.96;
   }
   100% {
-    transform: translate(-430px, 1060px) rotate(116deg) scale(0.98);
+    transform: translateY(1120px) rotate(-90deg) scale(0.98);
     opacity: 0;
   }
 }
 
 @keyframes flyHomeB {
   0% {
-    transform: translate(-120px, -40px) rotate(62deg) scale(0.58);
+    transform: translateY(-60px) rotate(-90deg) scale(0.58);
     opacity: 0;
   }
   10% {
     opacity: 0.88;
   }
   48% {
-    transform: translate(260px, 520px) rotate(62deg) scale(0.72);
+    transform: translateY(560px) rotate(-90deg) scale(0.72);
   }
   84% {
     opacity: 0.88;
   }
   100% {
-    transform: translate(430px, 1160px) rotate(62deg) scale(0.88);
+    transform: translateY(1220px) rotate(-90deg) scale(0.88);
     opacity: 0;
   }
 }
@@ -454,45 +454,46 @@ h2 {
 
   .plane-a {
     top: 192px;
-    right: 7%;
-    transform: rotate(-8deg);
+    left: 22%;
+    transform: rotate(-90deg);
   }
 
   .plane-b {
     top: 612px;
-    left: 7%;
-    transform: scale(0.82) rotate(7deg);
+    left: 64%;
+    transform: scale(0.82) rotate(-90deg);
   }
 }
 
 .baltimore-scene {
   bottom: 0;
   height: 430px;
+  overflow: hidden;
   background:
     linear-gradient(to bottom, #bdeeff 0 22%, #88d7fb 22% 45%, #407fa0 45% 100%);
 }
 
-.harbor-photo-strip {
+.baltimore-photo {
   position: absolute;
-  inset: 20px 3% auto;
-  height: 150px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  opacity: 0.86;
-}
-
-.harbor-photo-strip img {
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border: 3px solid rgba(255, 255, 255, 0.88);
-  border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(52, 16, 76, 0.28);
+  opacity: 0.78;
+}
+
+.baltimore-scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(80, 188, 235, 0.08), rgba(17, 80, 120, 0.42)),
+    linear-gradient(to right, rgba(52, 16, 76, 0.18), transparent 28%, transparent 72%, rgba(52, 16, 76, 0.18));
 }
 
 .harbor-water {
   position: absolute;
+  z-index: 1;
   inset-inline: 0;
   bottom: 0;
   height: 190px;
@@ -510,6 +511,7 @@ h2 {
 
 .harbor-buildings {
   position: absolute;
+  z-index: 1;
   left: 0;
   right: 0;
   bottom: 170px;
@@ -536,6 +538,7 @@ h2 {
 
 .harbor-boat {
   position: absolute;
+  z-index: 2;
   left: 17%;
   bottom: 72px;
   width: 150px;
@@ -575,7 +578,7 @@ h2 {
 .level-stop {
   position: absolute;
   z-index: 3;
-  width: clamp(56px, 7vw, 82px);
+  width: clamp(78px, 8.5vw, 108px);
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
   overflow: hidden;
@@ -586,6 +589,9 @@ h2 {
   box-shadow: 0 8px 16px rgba(52, 16, 76, 0.25);
   font-weight: 950;
   cursor: not-allowed;
+  display: grid;
+  place-items: center;
+  line-height: 1.02;
 }
 
 .level-stop.unlocked {
@@ -621,12 +627,12 @@ h2 {
 }
 
 .level-number {
-  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-size: clamp(1.25rem, 3.4vw, 1.8rem);
 }
 
 .level-date {
-  margin-top: 2px;
-  font-size: 0.72rem;
+  margin-top: 3px;
+  font-size: clamp(0.82rem, 1.6vw, 1rem);
 }
 
 .level-countdown {
@@ -867,11 +873,11 @@ input {
 
 @media (max-width: 620px) {
   .route-panel {
-    min-height: 1900px;
+    min-height: 2100px;
   }
 
   .level-stop {
-    width: 56px;
+    width: 74px;
   }
 
   .map-labels {
@@ -879,17 +885,7 @@ input {
   }
 
   .map-labels span:last-child {
-    top: 1828px;
-  }
-
-  .harbor-photo-strip {
-    grid-template-columns: 1fr;
-    height: 210px;
-  }
-
-  .harbor-photo-strip img:nth-child(2),
-  .harbor-photo-strip img:nth-child(3) {
-    display: none;
+    top: 2028px;
   }
 
   .modal-box {

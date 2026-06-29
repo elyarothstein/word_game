@@ -98,7 +98,7 @@ function buildRoad() {
   road.setAttribute("d", pathData);
   road.setAttribute("fill", "none");
   road.setAttribute("stroke", "var(--road)");
-  road.setAttribute("stroke-width", "8");
+  road.setAttribute("stroke-width", "10");
   road.setAttribute("stroke-linecap", "round");
   road.setAttribute("stroke-linejoin", "round");
   roadSvg.append(road);
@@ -107,7 +107,7 @@ function buildRoad() {
   centerLine.setAttribute("d", pathData);
   centerLine.setAttribute("fill", "none");
   centerLine.setAttribute("stroke", "var(--road-line)");
-  centerLine.setAttribute("stroke-width", "1.4");
+  centerLine.setAttribute("stroke-width", "1.8");
   centerLine.setAttribute("stroke-linecap", "round");
   centerLine.setAttribute("stroke-dasharray", "2.5 3.5");
   roadSvg.append(centerLine);
