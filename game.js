@@ -6,6 +6,7 @@ const KEY_ROWS = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
 const KEY_PRIORITY = { absent: 1, present: 2, correct: 3 };
 const COMPLETED_KEY = "roadHomeWordleCompletedVertical";
 const CUSTOM_WORDS_KEY = "roadHomeWordleCustomWordsVertical";
+const GAME_PASSWORD = "paps";
 
 const levels = [
   { date: "2026-06-29", city: "Chicago", photo: "aviva_images/level-1.jpg", answer: "COOKY", position: [50, 8] },
@@ -34,6 +35,11 @@ let currentGuess = "";
 let gameOver = false;
 
 const routeMap = document.querySelector("#routeMap");
+const passwordShell = document.querySelector("#passwordShell");
+const passwordForm = document.querySelector("#passwordForm");
+const passwordInput = document.querySelector("#passwordInput");
+const passwordMessage = document.querySelector("#passwordMessage");
+const appShell = document.querySelector("#appShell");
 const roadSvg = document.querySelector("#roadSvg");
 const todayLine = document.querySelector("#todayLine");
 const gameModal = document.querySelector("#gameModal");
@@ -59,6 +65,27 @@ function buildApp() {
   updateCountdownText();
   setInterval(updateCountdownText, 60000);
 }
+
+function unlockGame() {
+  passwordShell.classList.add("hidden");
+  appShell.classList.remove("locked");
+  appShell.setAttribute("aria-hidden", "false");
+}
+
+passwordForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if (passwordInput.value.trim().toLowerCase() === GAME_PASSWORD) {
+    unlockGame();
+    return;
+  }
+
+  passwordMessage.textContent = "Try again.";
+  passwordInput.value = "";
+  passwordInput.focus();
+});
+
+passwordInput.focus();
 
 function buildRoad() {
   roadSvg.innerHTML = "";

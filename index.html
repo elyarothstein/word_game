@@ -7,7 +7,20 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <main class="app-shell">
+    <main class="password-shell" id="passwordShell">
+      <section class="password-card">
+        <p class="eyebrow">Private game</p>
+        <h1>Road Home Wordle</h1>
+        <form id="passwordForm" class="password-form">
+          <label for="passwordInput">Password</label>
+          <input id="passwordInput" type="password" autocomplete="off" placeholder="Enter password">
+          <button type="submit">Unlock</button>
+        </form>
+        <p id="passwordMessage" class="password-message" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <main class="app-shell locked" id="appShell" aria-hidden="true">
       <header class="hero">
         <p class="eyebrow">Chicago to Baltimore</p>
         <h1>Road Home Wordle</h1>

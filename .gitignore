@@ -1,0 +1,26 @@
+# macOS Finder files
+.DS_Store
+._*
+
+# Empty-folder placeholders
+.keep
+
+# Editor and system folders
+.vscode/
+.idea/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Environment files
+.env
+.env.*
+
+# Dependency/build folders, in case this becomes a larger app later
+node_modules/
+dist/
+build/
