@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Road Home Wordle</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <p class="eyebrow">Chicago to Baltimore</p>
+        <h1>Road Home Wordle</h1>
+        <p id="todayLine" class="today-line">One new stop unlocks every day.</p>
+      </header>
+
+      <section class="route-panel" aria-label="Daily road map">
+        <div class="map-labels" aria-hidden="true">
+          <span>Chicago</span>
+          <span>Baltimore</span>
+        </div>
+        <div class="route-map" id="routeMap">
+          <div class="scene chicago-scene" aria-hidden="true">
+            <img class="chicago-photo" src="city-photos/chicago-1.png" alt="">
+            <div class="sun"></div>
+            <div class="chicago-buildings">
+              <span class="tower tower-a"></span>
+              <span class="tower tower-b"></span>
+              <span class="tower tower-c"></span>
+              <span class="tower tower-d"></span>
+              <span class="tower tower-e"></span>
+              <span class="tower tower-f"></span>
+              <span class="tower tower-g"></span>
+            </div>
+          </div>
+          <div class="scene sky-scene" aria-hidden="true">
+            <span class="cloud cloud-a"></span>
+            <span class="cloud cloud-b"></span>
+            <span class="cloud cloud-c"></span>
+            <span class="cloud cloud-d"></span>
+            <span class="cloud cloud-e"></span>
+            <span class="cloud cloud-f"></span>
+            <span class="bird bird-a"></span>
+            <span class="bird bird-b"></span>
+            <span class="bird bird-c"></span>
+            <span class="bird bird-d"></span>
+            <img class="plane plane-a" src="city-photos/southwest-plane-1.png" alt="">
+            <img class="plane plane-b" src="city-photos/southwest-plane-2.png" alt="">
+          </div>
+          <div class="scene baltimore-scene" aria-hidden="true">
+            <div class="harbor-photo-strip">
+              <img src="city-photos/baltimore-1.png" alt="">
+              <img src="city-photos/baltimore-2.png" alt="">
+              <img src="city-photos/baltimore-4.png" alt="">
+            </div>
+            <div class="harbor-water"></div>
+            <div class="harbor-buildings">
+              <span class="harbor-building harbor-a"></span>
+              <span class="harbor-building harbor-b"></span>
+              <span class="harbor-building harbor-c"></span>
+              <span class="harbor-building harbor-d"></span>
+              <span class="harbor-building harbor-e"></span>
+            </div>
+            <div class="harbor-boat">
+              <span></span>
+            </div>
+          </div>
+          <svg id="roadSvg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+        </div>
+      </section>
+    </main>
+
+    <section class="modal" id="gameModal" aria-hidden="true">
+      <div class="modal-box game-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-top">
+          <div>
+            <p class="eyebrow" id="modalDate">Daily stop</p>
+            <h2 id="modalTitle">Wordle</h2>
+          </div>
+          <button class="icon-button" id="closeGameButton" type="button" aria-label="Close">X</button>
+        </div>
+
+        <section class="setup-panel" id="setupPanel">
+          <label for="secretWord">Grown-up setup word</label>
+          <div class="setup-row">
+            <input id="secretWord" type="password" inputmode="text" autocomplete="off" maxlength="5" placeholder="5 letters">
+            <button id="startButton" type="button">Start</button>
+          </div>
+          <p>This day does not have a word yet. Enter one five-letter word, then hand over the game.</p>
+        </section>
+
+        <p class="message-area" id="message" aria-live="polite">Guess the five-letter word.</p>
+        <section class="board" id="board" aria-label="Guess board"></section>
+        <section class="keyboard" id="keyboard" aria-label="On-screen keyboard"></section>
+      </div>
+    </section>
+
+    <section class="modal" id="rewardModal" aria-hidden="true">
+      <div class="modal-box reward-box" role="dialog" aria-modal="true" aria-labelledby="rewardTitle">
+        <div class="modal-top">
+          <div>
+            <p class="eyebrow">Closer to Baltimore</p>
+            <h2 id="rewardTitle">Level complete</h2>
+          </div>
+          <button class="icon-button" id="closeRewardButton" type="button" aria-label="Close">X</button>
+        </div>
+        <img id="rewardImage" alt="Unlocked photo">
+        <p id="rewardCountdown" class="reward-countdown"></p>
+      </div>
+    </section>
+
+    <script src="game.js"></script>
+  </body>
+</html>
