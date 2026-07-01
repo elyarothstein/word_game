@@ -314,6 +314,11 @@ function submitGuess() {
     return;
   }
 
+  if (!isValidGuess(currentGuess)) {
+    setMessage("That is not in the word list. Try a real word.");
+    return;
+  }
+
   const result = scoreGuess(currentGuess, answer);
   const row = getCurrentRow();
 
@@ -342,6 +347,18 @@ function submitGuess() {
   }
 
   setMessage("Keep going.");
+}
+
+function isValidGuess(guess) {
+  if (guess === answer) {
+    return true;
+  }
+
+  if (!window.VALID_FIVE_LETTER_WORDS) {
+    return true;
+  }
+
+  return window.VALID_FIVE_LETTER_WORDS.has(guess);
 }
 
 function scoreGuess(guess, secret) {
