@@ -21,11 +21,11 @@ const levels = [
   { date: "2026-07-08", city: "High Sky", photo: "aviva_images/level-10.jpg", answer: "SUNNY", position: [50, 55.25] },
   { date: "2026-07-09", city: "Cloud Bridge", photo: "aviva_images/level-11.jpg", answer: "MAGIC", position: [50, 60.5] },
   { date: "2026-07-10", city: "Almost There", photo: "aviva_images/level-12.jpg", answer: "LAUGH", position: [50, 65.75] },
-  { date: "2026-07-11", city: "Baltimore Sky", photo: "aviva_images/level-13.jpg", answer: "WATER", position: [50, 71] },
+  { date: "2026-07-11", city: "Baltimore Sky", photo: "aviva_images/level-13.jpg", answer: "PHONE", position: [50, 71] },
   { date: "2026-07-12", city: "Inner Harbor", photo: "aviva_images/level-14.jpg", answer: "BOATS", position: [50, 76.25] },
-  { date: "2026-07-13", city: "Harbor Walk", photo: "aviva_images/level-15.jpg", answer: "HUGGY", position: [50, 81.5] },
+  { date: "2026-07-13", city: "Harbor Walk", photo: "aviva_images/level-15.jpg", answer: "SALAD", position: [50, 81.5] },
   { date: "2026-07-14", city: "Baltimore Buildings", photo: "aviva_images/level-16.jpg", answer: "HOMES", position: [50, 86.75] },
-  { date: "2026-07-15", city: "Baltimore", photo: "aviva_images/level-17.jpg", answer: "AVIVA", position: [50, 92] }
+  { date: "2026-07-15", city: "Baltimore", photo: "aviva_images/level-17.jpg", answer: "SHELF", position: [50, 92] }
 ];
 
 let activeLevelIndex = null;
