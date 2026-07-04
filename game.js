@@ -6,6 +6,7 @@ const KEY_ROWS = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
 const KEY_PRIORITY = { absent: 1, present: 2, correct: 3 };
 const COMPLETED_KEY = "roadHomeWordleCompletedVertical";
 const CUSTOM_WORDS_KEY = "roadHomeWordleCustomWordsVertical";
+const SAVED_GUESSES_KEY = "roadHomeWordleSavedGuesses";
 const GAME_PASSWORD = "paps";
 
 const levels = [
@@ -170,6 +171,7 @@ function openLevel(index) {
 
   if (answer.length === WORD_LENGTH) {
     setupPanel.classList.add("hidden");
+    restoreSavedGuesses(level.date);
   } else {
     setupPanel.classList.remove("hidden");
     setMessage("Set this day's secret word first.");
@@ -191,6 +193,7 @@ function startGame() {
   const customWords = getCustomWords();
   customWords[level.date] = proposedAnswer;
   saveCustomWords(customWords);
+  clearSavedGuesses(level.date);
   answer = proposedAnswer;
   setupPanel.classList.add("hidden");
   secretWordInput.value = "";
@@ -205,6 +208,7 @@ function completeLevel() {
     localStorage.setItem(COMPLETED_KEY, JSON.stringify(completed));
   }
 
+  clearSavedGuesses(levels[activeLevelIndex].date);
   buildLevels();
   showReward(activeLevelIndex);
 }
@@ -321,11 +325,14 @@ function submitGuess() {
 
   const result = scoreGuess(currentGuess, answer);
   const row = getCurrentRow();
+  const submittedGuess = currentGuess;
 
   result.forEach((state, index) => {
     row.children[index].classList.add(state);
     updateKeyState(currentGuess[index], state);
   });
+
+  saveSubmittedGuess(submittedGuess);
 
   if (currentGuess === answer) {
     setMessage("You got it!");
@@ -343,6 +350,7 @@ function submitGuess() {
   if (currentRow >= MAX_GUESSES) {
     setMessage(`Game over. The word was ${answer}.`);
     gameOver = true;
+    clearSavedGuesses(levels[activeLevelIndex].date);
     return;
   }
 
@@ -359,6 +367,43 @@ function isValidGuess(guess) {
   }
 
   return window.VALID_FIVE_LETTER_WORDS.has(guess);
+}
+
+function restoreSavedGuesses(dateText) {
+  const savedGuesses = getSavedGuesses()[dateText] || [];
+  const guessesToRestore = savedGuesses.slice(0, MAX_GUESSES);
+
+  guessesToRestore.forEach((guess, rowIndex) => {
+    drawSubmittedGuess(rowIndex, guess);
+  });
+
+  currentRow = guessesToRestore.length;
+
+  if (currentRow > 0) {
+    const guessText = currentRow === 1 ? "guess" : "guesses";
+    setMessage(`${currentRow} ${guessText} already used. Keep going.`);
+  }
+}
+
+function drawSubmittedGuess(rowIndex, guess) {
+  const result = scoreGuess(guess, answer);
+  const row = document.querySelector(`[data-row="${rowIndex}"]`);
+
+  result.forEach((state, index) => {
+    row.children[index].textContent = guess[index];
+    row.children[index].className = `tile filled ${state}`;
+    updateKeyState(guess[index], state);
+  });
+}
+
+function saveSubmittedGuess(guess) {
+  const level = levels[activeLevelIndex];
+  const savedGuesses = getSavedGuesses();
+  const levelGuesses = savedGuesses[level.date] || [];
+
+  levelGuesses.push(guess);
+  savedGuesses[level.date] = levelGuesses.slice(0, MAX_GUESSES);
+  localStorage.setItem(SAVED_GUESSES_KEY, JSON.stringify(savedGuesses));
 }
 
 function scoreGuess(guess, secret) {
@@ -426,6 +471,16 @@ function getCustomWords() {
 
 function saveCustomWords(words) {
   localStorage.setItem(CUSTOM_WORDS_KEY, JSON.stringify(words));
+}
+
+function getSavedGuesses() {
+  return JSON.parse(localStorage.getItem(SAVED_GUESSES_KEY) || "{}");
+}
+
+function clearSavedGuesses(dateText) {
+  const savedGuesses = getSavedGuesses();
+  delete savedGuesses[dateText];
+  localStorage.setItem(SAVED_GUESSES_KEY, JSON.stringify(savedGuesses));
 }
 
 function todayKey() {
