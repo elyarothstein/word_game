@@ -114,6 +114,31 @@
       </div>
     </section>
 
+    <section class="modal" id="strandsModal" aria-hidden="true">
+      <div class="modal-box strands-box" role="dialog" aria-modal="true" aria-labelledby="strandsTitle">
+        <div class="modal-top">
+          <div>
+            <p class="eyebrow" id="strandsDate">Daily stop</p>
+            <h2 id="strandsTitle">Strands</h2>
+          </div>
+          <button class="icon-button" id="closeStrandsButton" type="button" aria-label="Close">X</button>
+        </div>
+
+        <div class="strands-info">
+          <p id="strandsTheme">Theme</p>
+          <p id="strandsCount">0 words found</p>
+        </div>
+        <p class="message-area" id="strandsMessage" aria-live="polite">Find the hidden theme words.</p>
+        <section class="strands-grid" id="strandsGrid" aria-label="Strands letter grid"></section>
+        <div class="strands-selection" id="strandsSelection">Pick touching letters.</div>
+        <div class="strands-actions">
+          <button id="clearStrandsButton" type="button">Clear</button>
+          <button id="submitStrandsButton" type="button">Submit Word</button>
+        </div>
+        <section class="found-words" id="foundWords" aria-label="Found Strands words"></section>
+      </div>
+    </section>
+
     <section class="modal" id="rewardModal" aria-hidden="true">
       <div class="modal-box reward-box" role="dialog" aria-modal="true" aria-labelledby="rewardTitle">
         <div class="modal-top">
