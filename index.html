@@ -128,10 +128,12 @@
           <p id="strandsTheme">Theme</p>
           <p id="strandsCount">0 words found</p>
         </div>
+        <div class="hint-meter" id="hintMeter">Find 3 extra words to earn a hint.</div>
         <p class="message-area" id="strandsMessage" aria-live="polite">Find the hidden theme words.</p>
         <section class="strands-grid" id="strandsGrid" aria-label="Strands letter grid"></section>
         <div class="strands-selection" id="strandsSelection">Pick touching letters.</div>
         <div class="strands-actions">
+          <button id="hintStrandsButton" type="button">Hint</button>
           <button id="clearStrandsButton" type="button">Clear</button>
           <button id="submitStrandsButton" type="button">Submit Word</button>
         </div>
@@ -154,6 +156,7 @@
     </section>
 
     <script src="valid-words.js"></script>
+    <script src="valid-strands-words.js"></script>
     <script src="game.js"></script>
   </body>
 </html>

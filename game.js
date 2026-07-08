@@ -10,6 +10,7 @@ const CUSTOM_WORDS_KEY = "roadHomeWordleCustomWordsVertical";
 const SAVED_GUESSES_KEY = "roadHomeWordleSavedGuesses";
 const WORDLE_COMPLETED_KEY = "roadHomeWordleWordleCompleted";
 const STRANDS_PROGRESS_KEY = "roadHomeWordleStrandsProgress";
+const STRANDS_HINT_COST = 3;
 const GAME_PASSWORD = "paps";
 
 const levels = [
@@ -89,6 +90,8 @@ const strandsCount = document.querySelector("#strandsCount");
 const strandsMessage = document.querySelector("#strandsMessage");
 const strandsGrid = document.querySelector("#strandsGrid");
 const strandsSelectionText = document.querySelector("#strandsSelection");
+const hintMeter = document.querySelector("#hintMeter");
+const hintStrandsButton = document.querySelector("#hintStrandsButton");
 const clearStrandsButton = document.querySelector("#clearStrandsButton");
 const submitStrandsButton = document.querySelector("#submitStrandsButton");
 const foundWords = document.querySelector("#foundWords");
@@ -312,11 +315,17 @@ function openStrands(index) {
 
 function buildStrandsGrid() {
   const puzzle = strandsPuzzles[activeLevelIndex];
-  const found = getStrandsFoundWords(levels[activeLevelIndex].date);
+  const progress = getStrandsProgressForDate(levels[activeLevelIndex].date);
+  const found = progress.found;
   const foundCellIndexes = new Set();
+  const hintedCellIndexes = new Set();
 
   found.forEach((word) => {
     findWordPath(puzzle.grid, word).forEach((cellIndex) => foundCellIndexes.add(cellIndex));
+  });
+
+  progress.hintedWords.forEach((word) => {
+    findWordPath(puzzle.grid, word).forEach((cellIndex) => hintedCellIndexes.add(cellIndex));
   });
 
   strandsGrid.innerHTML = "";
@@ -334,6 +343,8 @@ function buildStrandsGrid() {
 
       if (foundCellIndexes.has(cellIndex)) {
         cell.classList.add("found");
+      } else if (hintedCellIndexes.has(cellIndex)) {
+        cell.classList.add("hinted");
       }
 
       cell.addEventListener("click", () => selectStrandsCell(cellIndex));
@@ -376,9 +387,19 @@ function submitStrandsWord() {
   const selectedWord = getSelectedStrandsWord();
   const reversedWord = selectedWord.split("").reverse().join("");
   const matchedWord = puzzle.words.find((word) => word === selectedWord || word === reversedWord);
+  const bonusWord = getValidStrandsBonusWord(selectedWord, reversedWord);
 
   if (!matchedWord) {
-    strandsMessage.textContent = "That is not one of the hidden theme words.";
+    if (bonusWord) {
+      if (saveBonusStrandsWord(level.date, bonusWord)) {
+        strandsMessage.textContent = `${bonusWord} earns hint credit.`;
+      }
+      clearStrandsSelection();
+      updateStrandsProgress();
+      return;
+    }
+
+    strandsMessage.textContent = "That is not in the word list.";
     clearStrandsSelection();
     return;
   }
@@ -407,20 +428,85 @@ function submitStrandsWord() {
   }
 }
 
+function useStrandsHint() {
+  const level = levels[activeLevelIndex];
+  const puzzle = strandsPuzzles[activeLevelIndex];
+  const progress = getStrandsProgressForDate(level.date);
+  const hiddenWord = puzzle.words.find((word) => !progress.found.includes(word) && !progress.hintedWords.includes(word));
+
+  if (progress.hintCredits < STRANDS_HINT_COST) {
+    const needed = STRANDS_HINT_COST - progress.hintCredits;
+    strandsMessage.textContent = `Find ${needed} more extra ${needed === 1 ? "word" : "words"} for a hint.`;
+    return;
+  }
+
+  if (!hiddenWord) {
+    strandsMessage.textContent = "No more hints needed.";
+    return;
+  }
+
+  progress.hintCredits -= STRANDS_HINT_COST;
+  progress.hintedWords.push(hiddenWord);
+  saveStrandsProgress(level.date, progress);
+  strandsMessage.textContent = `Hint: look for a ${hiddenWord.length}-letter word.`;
+  clearStrandsSelection();
+  buildStrandsGrid();
+  updateStrandsProgress();
+}
+
 function updateStrandsProgress() {
   const puzzle = strandsPuzzles[activeLevelIndex];
-  const found = getStrandsFoundWords(levels[activeLevelIndex].date);
+  const progress = getStrandsProgressForDate(levels[activeLevelIndex].date);
+  const found = progress.found;
   const wordText = puzzle.words.length === 1 ? "word" : "words";
 
-  strandsCount.textContent = `${found.length} of ${puzzle.words.length} ${wordText} found`;
+  strandsCount.textContent = `${found.length} of ${puzzle.words.length} theme ${wordText} found`;
+  hintMeter.textContent = getHintMeterText(progress.hintCredits);
+  hintStrandsButton.disabled = progress.hintCredits < STRANDS_HINT_COST || found.length === puzzle.words.length;
   foundWords.innerHTML = "";
 
   puzzle.words.forEach((word) => {
     const badge = document.createElement("span");
-    badge.className = found.includes(word) ? "found-word found" : "found-word";
-    badge.textContent = found.includes(word) ? word : `${word.length} letters`;
+    const isFound = found.includes(word);
+    const isHinted = progress.hintedWords.includes(word);
+
+    badge.className = isFound ? "found-word found" : "found-word";
+    if (isHinted && !isFound) {
+      badge.classList.add("hinted");
+    }
+
+    badge.textContent = isFound ? word : `${word.length} letters`;
     foundWords.append(badge);
   });
+}
+
+function getHintMeterText(hintCredits) {
+  const readyHints = Math.floor(hintCredits / STRANDS_HINT_COST);
+  const progress = hintCredits % STRANDS_HINT_COST;
+
+  if (readyHints > 0) {
+    return `${readyHints} ${readyHints === 1 ? "hint" : "hints"} ready. Extra words keep adding credits.`;
+  }
+
+  return `${progress} of ${STRANDS_HINT_COST} hint credits. Find real extra words for hints.`;
+}
+
+function getValidStrandsBonusWord(selectedWord, reversedWord) {
+  const puzzle = strandsPuzzles[activeLevelIndex];
+  const candidates = [selectedWord, reversedWord];
+  const word = candidates.find((candidate) => {
+    if (candidate.length < 3 || puzzle.words.includes(candidate)) {
+      return false;
+    }
+
+    if (window.VALID_STRANDS_WORDS) {
+      return window.VALID_STRANDS_WORDS.has(candidate);
+    }
+
+    return false;
+  });
+
+  return word || "";
 }
 
 function getSelectedStrandsWord() {
@@ -761,14 +847,54 @@ function getStrandsProgress() {
   return JSON.parse(localStorage.getItem(STRANDS_PROGRESS_KEY) || "{}");
 }
 
+function getStrandsProgressForDate(dateText) {
+  const progress = getStrandsProgress()[dateText];
+
+  if (Array.isArray(progress)) {
+    return {
+      found: progress,
+      hintCredits: 0,
+      bonusWords: [],
+      hintedWords: []
+    };
+  }
+
+  return {
+    found: progress?.found || [],
+    hintCredits: progress?.hintCredits || 0,
+    bonusWords: progress?.bonusWords || [],
+    hintedWords: progress?.hintedWords || []
+  };
+}
+
 function getStrandsFoundWords(dateText) {
-  return getStrandsProgress()[dateText] || [];
+  return getStrandsProgressForDate(dateText).found;
 }
 
 function saveStrandsFoundWords(dateText, words) {
+  const progress = getStrandsProgressForDate(dateText);
+  progress.found = words;
+  saveStrandsProgress(dateText, progress);
+}
+
+function saveStrandsProgress(dateText, levelProgress) {
   const progress = getStrandsProgress();
-  progress[dateText] = words;
+  progress[dateText] = levelProgress;
   localStorage.setItem(STRANDS_PROGRESS_KEY, JSON.stringify(progress));
+}
+
+function saveBonusStrandsWord(dateText, word) {
+  const progress = getStrandsProgressForDate(dateText);
+
+  if (progress.bonusWords.includes(word)) {
+    strandsMessage.textContent = "That extra word was already used.";
+    return false;
+  }
+
+  progress.bonusWords.push(word);
+  progress.hintCredits += 1;
+  saveStrandsProgress(dateText, progress);
+  return true;
 }
 
 function clearStrandsProgress(dateText) {
@@ -844,6 +970,7 @@ startButton.addEventListener("click", startGame);
 closeGameButton.addEventListener("click", closeGame);
 closeStrandsButton.addEventListener("click", closeStrands);
 closeRewardButton.addEventListener("click", closeReward);
+hintStrandsButton.addEventListener("click", useStrandsHint);
 clearStrandsButton.addEventListener("click", clearStrandsSelection);
 submitStrandsButton.addEventListener("click", submitStrandsWord);
 
