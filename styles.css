@@ -901,38 +901,36 @@ input {
 }
 
 .strands-grid {
-  width: min(100%, 420px);
+  width: min(100%, 500px);
   margin: 12px auto;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 7px;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 5px;
 }
 
 .strands-cell {
   aspect-ratio: 1;
-  border: 2px solid var(--line);
-  border-radius: 8px;
-  background: #fff;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
   color: var(--ink);
-  font-size: clamp(1rem, 5vw, 1.6rem);
+  font-size: clamp(0.95rem, 3.8vw, 1.35rem);
   font-weight: 950;
 }
 
 .strands-cell.selected {
   background: var(--blue);
-  border-color: var(--ink);
+  color: var(--ink);
   transform: translateY(-1px);
 }
 
 .strands-cell.found {
-  background: var(--green);
-  border-color: var(--green);
-  color: #fff;
+  background: #ffd54f;
+  color: var(--ink);
 }
 
 .strands-cell.hinted {
   background: #b9edf8;
-  border-color: #4eaec6;
   box-shadow: 0 0 0 3px rgba(78, 174, 198, 0.24);
 }
 

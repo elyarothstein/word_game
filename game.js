@@ -34,23 +34,23 @@ const levels = [
 ];
 
 const strandsPuzzles = [
-  { theme: "Cookie time", grid: ["COOKIE", "SUGARX", "FLOURX", "SWEETX", "DOUGHX", "TREATS"], words: ["COOKIE", "SUGAR", "FLOUR", "SWEET", "DOUGH"] },
-  { theme: "Happy faces", grid: ["SMILEX", "LAUGHS", "GRINXX", "JOYFUL", "CHEERY", "GIGGLE"], words: ["SMILE", "LAUGH", "GRIN", "JOYFUL", "CHEERY", "GIGGLE"] },
-  { theme: "Up in the sky", grid: ["CLOUDS", "SUNNYX", "BIRDSX", "PLANEY", "BREEZE", "SKYWAY"], words: ["CLOUDS", "SUNNY", "BIRDS", "PLANE", "BREEZE"] },
-  { theme: "Camp courage", grid: ["BRAVEX", "TRAILX", "CABINX", "FIREXX", "SONGSX", "BUNKXX"], words: ["BRAVE", "TRAIL", "CABIN", "FIRE", "SONGS", "BUNK"] },
-  { theme: "Sweet day", grid: ["HAPPYX", "CANDYX", "CAKEXX", "PARTYX", "GAMESX", "GIFTSX"], words: ["HAPPY", "CANDY", "CAKE", "PARTY", "GAMES", "GIFTS"] },
-  { theme: "Fourth of July", grid: ["SPARKS", "STARSX", "FLAGSX", "REDXXX", "WHITEX", "BLUELY"], words: ["SPARKS", "STARS", "FLAGS", "RED", "WHITE", "BLUE"] },
-  { theme: "Flying home", grid: ["PLANES", "WINGSX", "CLOUDS", "TICKET", "SEATXX", "PILOTX"], words: ["PLANES", "WINGS", "CLOUDS", "TICKET", "SEAT", "PILOT"] },
-  { theme: "Dream night", grid: ["DREAMS", "STARSX", "MOONXX", "SLEEPX", "PILLOW", "QUIETX"], words: ["DREAMS", "STARS", "MOON", "SLEEP", "PILLOW", "QUIET"] },
-  { theme: "Bird watching", grid: ["BIRDSX", "NESTXX", "WINGSX", "SONGXX", "FEATHR", "FLYING"], words: ["BIRDS", "NEST", "WINGS", "SONG", "FLYING"] },
-  { theme: "Sunny weather", grid: ["SUNNYX", "LIGHTX", "WARMXX", "SHADEX", "BEACHX", "WATERX"], words: ["SUNNY", "LIGHT", "WARM", "SHADE", "BEACH", "WATER"] },
-  { theme: "Magic show", grid: ["MAGICX", "WANDXX", "TRICKX", "STAGEX", "RABBIT", "SPARKS"], words: ["MAGIC", "WAND", "TRICK", "STAGE", "RABBIT", "SPARKS"] },
-  { theme: "Laugh break", grid: ["LAUGHS", "JOKESX", "FUNNYX", "SILLYX", "GIGGLE", "SMILEX"], words: ["LAUGHS", "JOKES", "FUNNY", "SILLY", "GIGGLE", "SMILE"] },
-  { theme: "Call home", grid: ["PHONEX", "CALLXX", "HELLOX", "VOICEY", "TEXTXX", "FAMILY"], words: ["PHONE", "CALL", "HELLO", "VOICE", "TEXT", "FAMILY"] },
-  { theme: "Inner Harbor", grid: ["BOATSX", "WATERX", "DOCKXX", "SAILXX", "HARBOR", "WAVESX"], words: ["BOATS", "WATER", "DOCK", "SAIL", "HARBOR", "WAVES"] },
-  { theme: "Lunch favorites", grid: ["SALADX", "PASTAX", "FRUITX", "BREADX", "JUICEX", "SNACKS"], words: ["SALAD", "PASTA", "FRUIT", "BREAD", "JUICE", "SNACKS"] },
-  { theme: "Home things", grid: ["HOMESX", "ROOMXX", "COUCHX", "TABLEX", "LIGHTX", "DOORXX"], words: ["HOMES", "ROOM", "COUCH", "TABLE", "LIGHT", "DOOR"] },
-  { theme: "Almost unpacked", grid: ["SHELFX", "BAGXXX", "SHOESX", "BOOKSX", "CLOTHS", "HUGSXX"], words: ["SHELF", "BAG", "SHOES", "BOOKS", "HUGS"] }
+  { theme: "Cookie time", grid: ["VTSSMJAR", "EWEOSGFO", "IUHGURUL", "KXUDEEWF", "BOXOQTHS", "CCOHXRMC"], words: ["COOKIE", "SUGAR", "FLOUR", "SWEET", "DOUGH"] },
+  { theme: "Happy faces", grid: ["LYGHJOLN", "RAUUYNWF", "EELEFEGI", "HBJMRPNR", "CEIQGGAX", "TLSMGILE"], words: ["SMILE", "LAUGH", "GRIN", "JOYFUL", "CHEERY", "GIGGLE"] },
+  { theme: "Up in the sky", grid: ["IUNNRBLC", "NSYEHOUD", "ECKZEVOS", "YBWQEPLP", "IDOTIJAE", "URSBCSGN"], words: ["CLOUDS", "SUNNY", "BIRDS", "PLANE", "BREEZE"] },
+  { theme: "Camp courage", grid: ["BIOCRTAV", "VEEXARSE", "VTOHBIGO", "SFEWLSON", "LBBNBRIF", "CAIAEUNK"], words: ["BRAVE", "TRAIL", "CABIN", "FIRE", "SONGS", "BUNK"] },
+  { theme: "Sweet day", grid: ["QUMIOVEK", "SWDQKNAC", "SESQGYDC", "JRMAHTPP", "LITARAYR", "GSFPWKVG"], words: ["HAPPY", "CANDY", "CAKE", "PARTY", "GAMES", "GIFTS"] },
+  { theme: "Fourth of July", grid: ["FDWTEQRW", "ALSHIRSA", "LGZHDETR", "MBCLUGKS", "GGUBLLRF", "QLNESPAF"], words: ["SPARKS", "STARS", "FLAGS", "RED", "WHITE", "BLUE"] },
+  { theme: "Flying home", grid: ["TKWIKEKV", "UDNTICTK", "OTSGKFTR", "LYESMSTO", "CGSNEAIL", "RUALPHNP"], words: ["PLANES", "WINGS", "CLOUDS", "TICKET", "SEAT", "PILOT"] },
+  { theme: "Dream night", grid: ["ZLOWQOOO", "LPTLKBNM", "EISABRDO", "ELRAERIQ", "PKMSTEUY", "OSWPZMXS"], words: ["DREAMS", "STARS", "MOON", "SLEEP", "PILLOW", "QUIET"] },
+  { theme: "Bird watching", grid: ["JZMTGYNO", "QTLHGGCS", "ENENTHAD", "SNSGIMDR", "WTTYNXBI", "POLFIIWD"], words: ["BIRDS", "NEST", "WINGS", "SONG", "FLYING"] },
+  { theme: "Sunny weather", grid: ["AGVAWBUN", "RYOARMNS", "ARFIOULY", "FTECHTDT", "ATMAEHSI", "QWBEADGL"], words: ["SUNNY", "LIGHT", "WARM", "SHADE", "BEACH", "WATER"] },
+  { theme: "Magic show", grid: ["VLQWANDB", "RVUSKRGB", "RNVCAQUE", "RITPIGAG", "BASIRTAM", "LBKCCSIQ"], words: ["MAGIC", "WAND", "TRICK", "STAGE", "RABBIT", "SPARKS"] },
+  { theme: "Laugh break", grid: ["RSYLLIGL", "EGHCSGIG", "LIUPELHU", "MSYAWSUK", "UNKLKEHO", "FUNOJVZR"], words: ["LAUGHS", "JOKES", "FUNNY", "SILLY", "GIGGLE", "SMILE"] },
+  { theme: "Call home", grid: ["TLFBHCIA", "TECWTEEO", "WXPLOLVG", "PHGGLRYJ", "EOCAKLAF", "NUUTDIMI"], words: ["PHONE", "CALL", "HELLO", "VOICE", "TEXT", "FAMILY"] },
+  { theme: "Inner Harbor", grid: ["HAUVGDKW", "JGRBYOAC", "KXLROVEO", "EWGCCRDS", "TARBOSIL", "CECPTAAS"], words: ["BOATS", "WATER", "DOCK", "SAIL", "HARBOR", "WAVES"] },
+  { theme: "Lunch favorites", grid: ["AKJURFPA", "CNSUITST", "SMISATFU", "NXCGQDBA", "SDLEBQAR", "VAAJRDGE"], words: ["SALAD", "PASTA", "FRUIT", "BREAD", "JUICE", "SNACKS"] },
+  { theme: "Home things", grid: ["OOZZHCUO", "MDRXBWCY", "TOOPLDWX", "HGRBUESE", "FZIAHEMW", "DLGTOMYI"], words: ["HOMES", "ROOM", "COUCH", "TABLE", "LIGHT", "DOOR"] },
+  { theme: "Almost unpacked", grid: ["OKBHELVH", "SOEOSYES", "UQSIIPZL", "MGSHAQLF", "CDUBGAKN", "IHQGGSVF"], words: ["SHELF", "BAG", "SHOES", "BOOKS", "HUGS"] }
 ];
 
 let activeLevelIndex = null;
@@ -59,6 +59,7 @@ let currentRow = 0;
 let currentGuess = "";
 let gameOver = false;
 let strandsSelection = [];
+let isDraggingStrands = false;
 
 const routeMap = document.querySelector("#routeMap");
 const passwordShell = document.querySelector("#passwordShell");
@@ -347,7 +348,16 @@ function buildStrandsGrid() {
         cell.classList.add("hinted");
       }
 
-      cell.addEventListener("click", () => selectStrandsCell(cellIndex));
+      cell.addEventListener("pointerdown", (event) => {
+        event.preventDefault();
+        isDraggingStrands = true;
+        selectStrandsCell(cellIndex);
+      });
+      cell.addEventListener("pointerenter", () => {
+        if (isDraggingStrands) {
+          selectStrandsCell(cellIndex);
+        }
+      });
       strandsGrid.append(cell);
     });
   });
@@ -547,32 +557,49 @@ function findWordPath(grid, word) {
   const rows = grid.length;
   const columns = grid[0].length;
 
+  function search(row, column, letterIndex, path, usedCells) {
+    if (
+      row < 0 ||
+      row >= rows ||
+      column < 0 ||
+      column >= columns ||
+      grid[row][column] !== word[letterIndex]
+    ) {
+      return null;
+    }
+
+    const cellIndex = getStrandsCellIndex(row, column, columns);
+
+    if (usedCells.has(cellIndex)) {
+      return null;
+    }
+
+    const nextPath = [...path, cellIndex];
+
+    if (letterIndex === word.length - 1) {
+      return nextPath;
+    }
+
+    const nextUsedCells = new Set(usedCells);
+    nextUsedCells.add(cellIndex);
+
+    for (const [rowStep, columnStep] of directions) {
+      const nextResult = search(row + rowStep, column + columnStep, letterIndex + 1, nextPath, nextUsedCells);
+
+      if (nextResult) {
+        return nextResult;
+      }
+    }
+
+    return null;
+  }
+
   for (let row = 0; row < rows; row += 1) {
     for (let column = 0; column < columns; column += 1) {
-      for (const [rowStep, columnStep] of directions) {
-        const path = [];
+      const path = search(row, column, 0, [], new Set());
 
-        for (let index = 0; index < word.length; index += 1) {
-          const nextRow = row + rowStep * index;
-          const nextColumn = column + columnStep * index;
-
-          if (
-            nextRow < 0 ||
-            nextRow >= rows ||
-            nextColumn < 0 ||
-            nextColumn >= columns ||
-            grid[nextRow][nextColumn] !== word[index]
-          ) {
-            path.length = 0;
-            break;
-          }
-
-          path.push(getStrandsCellIndex(nextRow, nextColumn, columns));
-        }
-
-        if (path.length === word.length) {
-          return path;
-        }
+      if (path) {
+        return path;
       }
     }
   }
@@ -1000,6 +1027,10 @@ document.addEventListener("keydown", (event) => {
   } else {
     handleInput(event.key.toUpperCase());
   }
+});
+
+document.addEventListener("pointerup", () => {
+  isDraggingStrands = false;
 });
 
 buildApp();
