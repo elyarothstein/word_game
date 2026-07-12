@@ -34,23 +34,23 @@ const levels = [
 ];
 
 const strandsPuzzles = [
-  { theme: "Cookie time", grid: ["VTSSMJAR", "EWEOSGFO", "IUHGURUL", "KXUDEEWF", "BOXOQTHS", "CCOHXRMC"], words: ["COOKIE", "SUGAR", "FLOUR", "SWEET", "DOUGH"] },
-  { theme: "Happy faces", grid: ["LYGHJOLN", "RAUUYNWF", "EELEFEGI", "HBJMRPNR", "CEIQGGAX", "TLSMGILE"], words: ["SMILE", "LAUGH", "GRIN", "JOYFUL", "CHEERY", "GIGGLE"] },
-  { theme: "Up in the sky", grid: ["IUNNRBLC", "NSYEHOUD", "ECKZEVOS", "YBWQEPLP", "IDOTIJAE", "URSBCSGN"], words: ["CLOUDS", "SUNNY", "BIRDS", "PLANE", "BREEZE"] },
-  { theme: "Camp courage", grid: ["BIOCRTAV", "VEEXARSE", "VTOHBIGO", "SFEWLSON", "LBBNBRIF", "CAIAEUNK"], words: ["BRAVE", "TRAIL", "CABIN", "FIRE", "SONGS", "BUNK"] },
-  { theme: "Sweet day", grid: ["QUMIOVEK", "SWDQKNAC", "SESQGYDC", "JRMAHTPP", "LITARAYR", "GSFPWKVG"], words: ["HAPPY", "CANDY", "CAKE", "PARTY", "GAMES", "GIFTS"] },
-  { theme: "Fourth of July", grid: ["FDWTEQRW", "ALSHIRSA", "LGZHDETR", "MBCLUGKS", "GGUBLLRF", "QLNESPAF"], words: ["SPARKS", "STARS", "FLAGS", "RED", "WHITE", "BLUE"] },
-  { theme: "Flying home", grid: ["TKWIKEKV", "UDNTICTK", "OTSGKFTR", "LYESMSTO", "CGSNEAIL", "RUALPHNP"], words: ["PLANES", "WINGS", "CLOUDS", "TICKET", "SEAT", "PILOT"] },
-  { theme: "Dream night", grid: ["ZLOWQOOO", "LPTLKBNM", "EISABRDO", "ELRAERIQ", "PKMSTEUY", "OSWPZMXS"], words: ["DREAMS", "STARS", "MOON", "SLEEP", "PILLOW", "QUIET"] },
-  { theme: "Bird watching", grid: ["JZMTGYNO", "QTLHGGCS", "ENENTHAD", "SNSGIMDR", "WTTYNXBI", "POLFIIWD"], words: ["BIRDS", "NEST", "WINGS", "SONG", "FLYING"] },
-  { theme: "Sunny weather", grid: ["AGVAWBUN", "RYOARMNS", "ARFIOULY", "FTECHTDT", "ATMAEHSI", "QWBEADGL"], words: ["SUNNY", "LIGHT", "WARM", "SHADE", "BEACH", "WATER"] },
-  { theme: "Magic show", grid: ["VLQWANDB", "RVUSKRGB", "RNVCAQUE", "RITPIGAG", "BASIRTAM", "LBKCCSIQ"], words: ["MAGIC", "WAND", "TRICK", "STAGE", "RABBIT", "SPARKS"] },
-  { theme: "Laugh break", grid: ["RSYLLIGL", "EGHCSGIG", "LIUPELHU", "MSYAWSUK", "UNKLKEHO", "FUNOJVZR"], words: ["LAUGHS", "JOKES", "FUNNY", "SILLY", "GIGGLE", "SMILE"] },
-  { theme: "Call home", grid: ["TLFBHCIA", "TECWTEEO", "WXPLOLVG", "PHGGLRYJ", "EOCAKLAF", "NUUTDIMI"], words: ["PHONE", "CALL", "HELLO", "VOICE", "TEXT", "FAMILY"] },
-  { theme: "Inner Harbor", grid: ["HAUVGDKW", "JGRBYOAC", "KXLROVEO", "EWGCCRDS", "TARBOSIL", "CECPTAAS"], words: ["BOATS", "WATER", "DOCK", "SAIL", "HARBOR", "WAVES"] },
-  { theme: "Lunch favorites", grid: ["AKJURFPA", "CNSUITST", "SMISATFU", "NXCGQDBA", "SDLEBQAR", "VAAJRDGE"], words: ["SALAD", "PASTA", "FRUIT", "BREAD", "JUICE", "SNACKS"] },
-  { theme: "Home things", grid: ["OOZZHCUO", "MDRXBWCY", "TOOPLDWX", "HGRBUESE", "FZIAHEMW", "DLGTOMYI"], words: ["HOMES", "ROOM", "COUCH", "TABLE", "LIGHT", "DOOR"] },
-  { theme: "Almost unpacked", grid: ["OKBHELVH", "SOEOSYES", "UQSIIPZL", "MGSHAQLF", "CDUBGAKN", "IHQGGSVF"], words: ["SHELF", "BAG", "SHOES", "BOOKS", "HUGS"] }
+  { theme: "Cookie time", grid: ["REANGCOE", "TTAIRSVN", "HSBKUMBW", "GUODTEES", "OCSURFRU", "OKIEGALO"], words: ["COOKIE", "SUGAR", "FLOUR", "SWEET", "DOUGH", "TREATS", "BAKING", "CRUMBS", "OVEN"] },
+  { theme: "Happy faces", grid: ["MILELAUG", "SGIGOJGH", "GLEAYYNR", "EBUFMRFI", "HYNALEHU", "APPGDECL"], words: ["SMILE", "LAUGH", "GRIN", "JOYFUL", "CHEERY", "GIGGLE", "HAPPY", "BEAM", "FUN", "GLAD"] },
+  { theme: "Up in the sky", grid: ["MULLBZER", "USUUTEEB", "CCEHGWES", "LSLIINPD", "OSGNALRI", "UDSUNNYB"], words: ["CLOUDS", "SUNNY", "BIRDS", "PLANE", "BREEZE", "WINGS", "LIGHT", "BLUE", "CUMULUS"] },
+  { theme: "Camp courage", grid: ["AVEFREES", "RTNISIDN", "RBIOTRFT", "ABNKSENI", "IAGNCEKH", "LCSBUAMP"], words: ["BRAVE", "TRAIL", "CABIN", "FIRE", "SONGS", "BUNK", "CAMP", "HIKES", "TENT", "FRIENDS"] },
+  { theme: "Sweet day", grid: ["FIGSGYRA", "TSONEATP", "SLISGMEK", "EHAMSCAA", "SGULYDNC", "FUNHAPPY"], words: ["HAPPY", "CANDY", "CAKE", "PARTY", "GAMES", "GIFTS", "SONGS", "SMILES", "FUN", "LAUGH"] },
+  { theme: "Fourth of July", grid: ["ORKARKSS", "WPAEPLAT", "ERDSPAFR", "ERACCIGS", "UFIINHDS", "LBETIWER"], words: ["SPARKS", "STARS", "FLAGS", "RED", "WHITE", "BLUE", "FIREWORK", "PARADE", "PICNIC"] },
+  { theme: "Flying home", grid: ["ENALSEAT", "SWPTETIP", "INEHGDIL", "GDKITFNO", "SUSCLUET", "CLOTITAG"], words: ["PLANES", "WINGS", "CLOUDS", "TICKET", "SEAT", "PILOT", "GATE", "UNITED", "FLIGHT"] },
+  { theme: "Dream night", grid: ["EAOWUIST", "MRLQEENH", "STDLTORG", "SALIBTNI", "ROSEPLEK", "SMONEPAN"], words: ["DREAMS", "STARS", "MOON", "SLEEP", "PILLOW", "QUIET", "BLANKET", "NIGHT", "SNORE"] },
+  { theme: "Bird watching", grid: ["GNIRDSNE", "FATYIWTS", "EHOBLBIN", "ERIPEFGG", "RKNSHRNS", "BEAYKCOS"], words: ["BIRDS", "NEST", "WINGS", "SONG", "FLYING", "FEATHER", "BEAK", "ROBIN", "PERCH", "SKY"] },
+  { theme: "Sunny weather", grid: ["MRAWTSUN", "SADHGHYN", "HEASTIGL", "BANDYRRI", "EWTSKBEM", "ACHERSUM"], words: ["SUNNY", "LIGHT", "WARM", "SHADE", "BEACH", "WATER", "SUMMER", "BRIGHT", "SAND", "SKY"] },
+  { theme: "Magic show", grid: ["RTDNAWAG", "IKSITMCI", "CTBSRASW", "ABPADTRO", "GAACSAHS", "ERRKSCPE"], words: ["MAGIC", "WAND", "TRICK", "STAGE", "RABBIT", "SPARKS", "CARDS", "CAPE", "SHOW", "STAR"] },
+  { theme: "Laugh break", grid: ["OKSUNSIL", "JEFNYGYL", "SHGAIGPA", "UHULGYPH", "CLCLRGEL", "EKNIESMI"], words: ["LAUGHS", "JOKES", "FUNNY", "SILLY", "GIGGLE", "SMILE", "HAPPY", "GRIN", "CHUCKLE"] },
+  { theme: "Call home", grid: ["DAMPHONE", "SIDOLEAC", "RESMTLHL", "METYFXOL", "GESLAECV", "ASIMTEIO"], words: ["PHONE", "CALL", "HELLO", "VOICE", "TEXT", "FAMILY", "MOM", "DAD", "SISTER", "MESSAGE"] },
+  { theme: "Inner Harbor", grid: ["TASTNACT", "ERWAOESH", "DOHOBIGE", "CLAAVLRI", "KIRWESPP", "SABORSHI"], words: ["BOATS", "WATER", "DOCK", "SAIL", "HARBOR", "WAVES", "SHIP", "PIER", "LIGHTS", "CANOE"] },
+  { theme: "Lunch favorites", grid: ["FRUADCES", "AIEJIKCN", "TTRUSOKA", "ASBAOIYO", "DPSPCEUG", "ALAPLERT"], words: ["SALAD", "PASTA", "FRUIT", "BREAD", "JUICE", "SNACKS", "APPLE", "COOKIE", "YOGURT"] },
+  { theme: "Home things", grid: ["MOSEMOHC", "COORHIAW", "UHTODBRO", "CAINWELP", "BLGWDLIR", "LEIHTDOO"], words: ["HOMES", "ROOM", "COUCH", "TABLE", "LIGHT", "DOOR", "PILLOW", "CHAIR", "BED", "WINDOW"] },
+  { theme: "Almost unpacked", grid: ["ESBUGOTH", "OOHSLAPE", "HOSCKCJS", "BSKSRYOA", "FAGLDNSM", "LEHSAUSA"], words: ["SHELF", "BAG", "SHOES", "BOOKS", "HUGS", "CLOTHES", "PAJAMAS", "SOCKS", "LAUNDRY"] }
 ];
 
 let activeLevelIndex = null;
